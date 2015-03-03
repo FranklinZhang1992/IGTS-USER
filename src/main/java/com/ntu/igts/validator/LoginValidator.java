@@ -21,5 +21,9 @@ public class LoginValidator {
             throw new ValidationException("Username or password is required.",
                             MessageKeys.USERNAME_OR_PASSWORD_CANNOT_BE_EMPTY);
         }
+        if ("".equals(jsonPostBody.optString(Constants.USERNAME))) {
+            throw new ValidationException("Username or password is required.",
+                            MessageKeys.USERNAME_OR_PASSWORD_CANNOT_BE_EMPTY);
+        }
     }
 }

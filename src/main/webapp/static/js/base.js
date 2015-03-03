@@ -17,8 +17,15 @@ function rest(restUrl, httpMethod, param, contenttype, datatype) {
             console.log('exception');
         }
     });
-    request.fail(function(textStatus, errorThrown) {
+    request.fail(function(exception, errorThrown) {
         console.log('fail');
+        $('body').append("<div class='alert alert-success' role='alert'><button class='close'  data-dismiss='alert' type='button' >&times;</button><p>"+exception.responseText+"</p></div>");
+       // $('body .flushInfo').html(exception.responseText);
+        var div = $('body .alert');
+       // div.animate( {height : '40px', width : '150px', opacity : '0.8'}, "slow");
+        div.fadeOut(3000, function() {
+        div.remove();
+        });
     });
 }
 
@@ -57,7 +64,7 @@ function doGet() {
 }
 
 $(function() {
-    $('.picButton').click(function() {
+    $('.btn').click(function() {
         doPost();
     });
 });

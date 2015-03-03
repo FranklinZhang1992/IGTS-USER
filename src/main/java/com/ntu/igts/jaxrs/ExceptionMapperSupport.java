@@ -19,6 +19,7 @@ import com.ntu.igts.exception.LoginException;
 import com.ntu.igts.exception.ServiceErrorException;
 import com.ntu.igts.exception.ServiceWarningException;
 import com.ntu.igts.exception.UnAuthenticationException;
+import com.ntu.igts.exception.ValidationException;
 import com.ntu.igts.i18n.MessageBuilder;
 import com.ntu.igts.utils.CommonUtil;
 import com.ntu.igts.utils.SpringUtil;
@@ -89,6 +90,11 @@ public class ExceptionMapperSupport implements ExceptionMapper<Exception> {
             // "User Name or password is wrong", locale);
             String message = "";
             LOGGER.warn(message, exception);
+            return Response.ok(message, MediaType.TEXT_PLAIN).status(status).build();
+        } else if (exception instanceof ValidationException) {
+            Status status = Status.BAD_REQUEST;
+            String message = exception.getMessage();
+            LOGGER.error(exception.getMessage(), exception);
             return Response.ok(message, MediaType.TEXT_PLAIN).status(status).build();
         } else {
             Status status = Status.INTERNAL_SERVER_ERROR;
