@@ -19,10 +19,9 @@ function rest(restUrl, httpMethod, param, contenttype, datatype) {
     });
     request.fail(function(exception, errorThrown) {
         console.log('fail');
-        $('body').append("<div class='alert alert-success' role='alert'><button class='close'  data-dismiss='alert' type='button' >&times;</button><p>"+exception.responseText+"</p></div>");
-       // $('body .flushInfo').html(exception.responseText);
+        var message = exception.responseText;
+        $('body').append("<div class='alert alert-success' role='alert'><button class='close'  data-dismiss='alert' type='button' >&times;</button><p>"+message+"</p></div>");
         var div = $('body .alert');
-       // div.animate( {height : '40px', width : '150px', opacity : '0.8'}, "slow");
         div.fadeOut(3000, function() {
         div.remove();
         });
