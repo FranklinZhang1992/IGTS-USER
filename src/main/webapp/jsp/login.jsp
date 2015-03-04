@@ -3,32 +3,36 @@
 <%@ page import="java.sql.*" errorPage=""%>
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login</title>
 <%
     String baseURL = request.getContextPath();
 %>
-    <!-- Bootstrap -->
-    <link href="<%=baseURL%>/static/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap -->
+<link href="<%=baseURL%>/static/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style type="text/css">
-        .container-login
-        {   margin-top: 120px;}
-        .form-box
-        {   border-style: solid;
-            border-color: gray;
-            border-width: 1px;
-            padding: 20px;}
-        .flushInfo {
+<style type="text/css">
+.container-login {
+    margin-top: 120px;
+}
+
+.form-box {
+    border-style: solid;
+    border-color: gray;
+    border-width: 1px;
+    padding: 20px;
+}
+
+.flushInfo {
     color: red;
     top: 10px;
     right: 10px;
@@ -42,42 +46,112 @@
     text-align: center;
     z-index: 10000;
 }
-.alert-position{
+
+.alert-position {
     top: 10px;
     right: 10px;
 }
-    </style>
-    
-  </head>
-  <body>
-    <div class="container container-fluid container-login">
-        <div class="row">
-            <div class="col-sm-9">
-                <div class="jumbotron">
-                    <h1>剁手网</hi>
-                    <p>闲置物品交易系统</p>
-                </div>
+
+.login-banner {
+    position: absolute;
+    left: 0;
+    top: -40px;
+    width: 100%;
+    height: 420px;
+    background: #57ACE8;
+}
+
+.w {
+    width: 990px;
+    margin: 0 auto;
+}
+
+.site-logo {
+    width: 50%;
+    height: 60px;
+    background: url(../static/image/logo-zh.gif) 50% 0px no-repeat;
+}
+
+.slider {
+    width: 100%;
+    height: 420px;
+    position: relative;
+    margin-top: 0px;
+    background: url(../static/image/login.png) 50% 0px no-repeat
+        rgb(233, 244, 251);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #57ACE8;
+    border-width: 1px;
+}
+
+.slider-list {
+    width: 100%;
+    height: 420px;
+}
+
+.login-bg {
+    display: none;
+}
+
+.customer-form-box {
+    position: absolute;
+    margin-right: -530px;
+    right: -70%;
+    overflow: hidden;
+    top: -365px;
+    z-index: 2;
+    background-color: white;
+}
+
+.login-warn-message {
+    width: 90%;
+    padding: 2px 0 2px 3px;
+    left: 0px;
+    top: 0px;
+    border: 1px solid #ffbdbf;
+    color: #e6393d;
+    background: #ffebec;
+    float: none;
+    line-height: 16px;
+    z-index: 100;
+    text-align: center;
+    display: none;
+}
+
+.warn-show {
+    display: "";
+}
+</style>
+
+</head>
+<body>
+    <div class="site-logo"></div>
+    <div class="container container-fluid container-login login-banner">
+        <div class="w">
+            <div class="slider">
+                <div class="slider-list"></div>
             </div>
-            <div class="col-sm-3">
-                <form role="form" class="form-box" id="myPopover">
-                    <div class="form-group">
-                        <h4>登录</h4>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputID">用户名</label>
-                        <input type="text" class="form-control" id="userName" placeholder="输入用户名">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword">密码</label>
-                        <input type="password" class="form-control" id="password" placeholder="输入密码">
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> 保存密码
-                        </label>
-                    </div>
-                    <button type="button" class="btn btn-primary btn-block">登录</button>
-                </form>
+            <div class="row">
+                <div class="col-sm-3">
+                    <form role="form" class="form-box customer-form-box" id="myPopover">
+                        <div class="form-group login-warn-message"></div>
+                        <div class="form-group">
+                            <label for="exampleInputID">用户名</label> <input type="text"
+                                class="form-control" id="userName" placeholder="输入用户名">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword">密码</label> <input
+                                type="password" class="form-control" id="password"
+                                placeholder="输入密码">
+                        </div>
+                        <div class="checkbox">
+                            <label> <input type="checkbox"> 保存密码
+                            </label>
+                        </div>
+                        <button type="button" class="btn btn-danger btn-block">登录</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -86,8 +160,8 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<%=baseURL%>/static/js/bootstrap.min.js"></script>
     <script src="<%=baseURL%>/static/js/base.js"></script>
-<script type="text/javascript">
-    var contextURL = '<%= baseURL%>/api';
-</script>
-  </body>
+    <script type="text/javascript">
+        var contextURL = '<%= baseURL%>/api';
+    </script>
+</body>
 </html>

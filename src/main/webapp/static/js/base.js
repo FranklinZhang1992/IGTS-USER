@@ -18,15 +18,28 @@ function rest(restUrl, httpMethod, param, contenttype, datatype) {
         }
     });
     request.fail(function(exception, errorThrown) {
-        console.log('fail');
         var message = exception.responseText;
-        $('body').append("<div class='alert alert-success' role='alert'><button class='close'  data-dismiss='alert' type='button' >&times;</button><p>"+message+"</p></div>");
-        var div = $('body .alert');
-        div.fadeOut(3000, function() {
-        div.remove();
-        });
+        console.log(message);
+        var div = $('.login-warn-message');
+        div.text(message);
+        div.css("display", "block");
     });
 }
+
+function displayException(exception) {
+    var message = exception.responseText;
+    var originalDiv =$('body .alert');
+    if (originalDiv != null) {
+        originalDiv.remove();
+    }
+    $('body').append("<div class='alert alert-success' role='alert'><button class='close'  data-dismiss='alert' type='button' >&times;</button><p>"+message+"</p></div>");
+    var div = $('body .alert');
+    div.fadeOut(3000, function() {
+    div.remove();
+    });
+}
+    
+
 
 /* POST */
 function doPost() {
