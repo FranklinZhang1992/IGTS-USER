@@ -104,6 +104,11 @@
     background-color: white;
 }
 
+.a {
+color: #6d6d6d;
+text-decoration: none;
+}
+
 .login-warn-message {
     width: 90%;
     padding: 2px 0 2px 3px;
@@ -117,6 +122,11 @@
     z-index: 100;
     text-align: center;
     display: none;
+}
+
+.forget-pw {
+position: absolute;
+right: 0;
 }
 
 .warn-show {
@@ -134,20 +144,18 @@
             </div>
             <div class="row">
                 <div class="col-sm-3">
-                    <form role="form" class="form-box customer-form-box" id="myPopover">
+                    <form class="form-box customer-form-box">
                         <div class="form-group login-warn-message"></div>
                         <div class="form-group">
-                            <label for="exampleInputID">用户名</label> <input type="text"
-                                class="form-control" id="userName" placeholder="输入用户名">
+                            <label for="exampleInputID">用户名</label>
+                                <input type="text" class="form-control" id="userName" placeholder="输入用户名" autofocus />
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword">密码</label> <input
-                                type="password" class="form-control" id="password"
-                                placeholder="输入密码">
+                            <label for="exampleInputPassword">密码</label>
+                                <input type="password" class="form-control" id="password" placeholder="输入密码" />
                         </div>
                         <div class="checkbox">
-                            <label> <input type="checkbox"> 保存密码
-                            </label>
+                            <label><a href="" target="_blank" id="forget-pw-safe" class="forget-pw" data-spm-anchor-id="a2107.1.1000341.3">忘记登录密码?</a></label>
                         </div>
                         <button type="button" class="btn btn-danger btn-block">登录</button>
                     </form>
