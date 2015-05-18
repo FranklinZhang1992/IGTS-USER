@@ -1,0 +1,125 @@
+
+<meta charset="UTF-8">
+<div class="new-order-div" ng-controller="BuyManagementController" style="margin-top: 70px;">
+	<div class="container row clearfix">
+	     <div class="col-md-3 column">
+			<div class="panel panel-default" ng-controller="BuyCommdodityInfoController">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						宝贝信息
+					</h3>
+				</div>
+				<div class="panel-body text-center">
+					<img alt="140x140" src="{{imageSrc}}" style="width: 80%; height: 50%; margin: 10%;"/>
+					<div class="good-info">
+						 <ul>
+							<li>
+								<label>宝贝名称：</label>
+								<span class="name" style="color:#FF5500">
+									<a href="#" target="_blank">{{commodity.title}}</a>
+								</span>
+							</li>
+							<li>
+								<label>宝贝单价：</label>
+								<span class="priceText">{{commodity.price}}</span> 元
+							</li>
+							<li>
+								<label>运费：</label>
+								<span>{{commodity.carriage}}</span>元
+							</li>
+							<li>
+                                <label>付款方式：</label>
+                                <span style="color:#FF5500">支付宝</span>
+                            </li>
+							<li>
+								<label>所在地：</label>{{commodity.district}}
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="panel-footer"></div>
+			</div>
+		</div>
+
+			<div class="address col-md-9 column hd" ng-controller="BuyCommdodityFormController">
+				<em>确认收货地址</em><span style="margin-left:10px;font-size: 12px;"><a href="">管理我的收货地址</a></span>
+				<div class="bd">
+					<ul id="address-collection">
+						<li ng-repeat="address in addressList" ng-class="{'selected': address.selectedAddress}">
+							<label>
+								<input type="radio" name="address" checked ng-click="selectAddress($index)">
+								<span class="buyer-name">{{address.addressprovince}}{{address.addresscity}}</span>
+								<span class="buyer-address">
+								    {{address.addressdetail}}&nbsp;&nbsp;{{address.phonenumber}}
+								</span>
+							</label>
+						</li>
+						<li>
+							<label>
+							<input type="radio" name="address" ng-click="addNewAddress()">
+								<span class="use-other-address">使用其它地址</span>
+							</label>
+						</li>
+					</ul>
+				</div>
+				<!--end address-->
+				<div class="order-box">
+		            <div class="hd"><em>确认购买信息</em></div>
+		            <div class="bd">
+			            <table id="trade-info">
+			                <colgroup><col width="85"><col width="*"></colgroup>
+			                <tbody>
+			                    <input type="hidden" name="_fm.i._0.q" value="1" tabindex="8">
+			                    <tr>
+			                        <td class="first-col">
+			                       	 购买数量：
+			                        </td>
+			                        <td class="J_PromoCombo" data-order="45365044474:0">
+			                            <span class="h">*</span>
+			                            1 件<span id="allowQuantity" allowquantity="1">
+			                            </span>
+			                        </td>
+			                    </tr>
+			                                            
+			                    <tr>
+			                        <td class="first-col">
+			                           	 留言：
+			                        </td>
+			                        <td>
+			                            <textarea ng-model="indent.indentmessage" tabindex="10" class="msgtosaler tips" placeholder="选填，可以告诉卖家您对商品的特殊要求，如：颜色、尺码等"></textarea>
+			                         </td>
+			                    </tr>
+			                </tbody>
+			            </table>
+		            </div>
+			  </div>
+				<div class="order-box">
+				    <div class="hd"><h3><em>确认提交订单</em></h3></div>
+				    <div class="bd">
+				        <ul id="submit-box">
+				             <li class="price-info J_PromoCombo">
+				                    <span class="actual-price"><em id="actualPriceString">实付款(含运费)：</em><strong class="value">{{total}}</strong> 元</span>
+				            </li>                         
+				               <li id="confirm-btn-li">
+				                <input ng-click="saveIndent()" id="performSubmit" type="image" name="Submit" src="images/buy.gif" hidefocus="true"  alt="确认无误，购买">	
+                              </li>
+				        </ul>
+				       </div>
+				</div>
+			</div>
+			    <!-- Modal -->
+          <div class="modal fade" id="AddAddressModal" tabindex="-1" role="dialog" ng-controller="AddAddressController">
+            <div class="modal-dialog">
+	            <div class="modal-content">
+	                   <div class="modal-header">
+	                                                                                        添加新地址
+	                   </div>
+	                   <div class="modal-body">
+	                   </div>
+	                   <div class="modal-footer">
+	                   </div>
+	            </div>
+            </div>
+         </div>
+	 </div>
+</div>	

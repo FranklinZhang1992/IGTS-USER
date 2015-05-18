@@ -1,0 +1,40 @@
+.dialog-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+}
+
+.dialog-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+}
+
+.dialog-error {
+    color: #a94442;
+    background-color: #f2dede;
+}
+
+.dialog-default {
+    color: #31708f;
+    background-color: #d9edf7;
+}
+
+.paginationdisabled {
+    cursor:not-allowed !important;
+}
+
+.my-row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.desc-font {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
